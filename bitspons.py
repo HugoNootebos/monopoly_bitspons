@@ -74,7 +74,7 @@ print("Type [help] to view available commands")
 players = []
 player_num = 0
 turn_num = 1
-n = input('Hoeveel spelers? ')
+n = int(input('Hoeveel spelers? '))
 for i in range(int(n)):
     players += [input('Speler ' + str(i + 1) + ': ')]
 print('Stalin (', players[0], ') is aan de beurt')
@@ -119,6 +119,7 @@ while (True):
         print("Type [invest] om een geldbedrag om te rekenen naar Bit$")
         print("Voer een getal in om van Bit$ naar $pons te rekenen")
         print("Type [stalin] om de Stalin acties te bekijken")
+        print("Type [eliminate] om een speler weg te halen")
         print("Type [q] om te stoppen")
     elif inp == "stalin":
         communist = input('Hoe veel communistische wetten liggen er?: ')
@@ -163,6 +164,10 @@ while (True):
             update_bitspons3(diff, bitsponsarr)
         plt.plot(bitsponsarr)
         plt.show()
+    elif inp == "eliminate":
+        players.remove(players[player_num])
+        print(players[player_num] + " is geëlimineerd")
+        n -= 1
     elif inp == 'newtest':
         bitsponsarr = [10, 10, 10]
         diff = [0, 0, 0]
