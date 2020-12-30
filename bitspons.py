@@ -84,15 +84,22 @@ while (True):
     if inp == "":
         turn_num += 1
         update_bitspons3(diff, bitsponsarr)
-        plt.plot(bitsponsarr)
-        plt.show()
+        #plt.plot(bitsponsarr)
+        #plt.show()
         if player_num >= int(n) - 1:
             player_num = 0
         else:
             player_num += 1
         print('Beurt ' + str(turn_num) + ": " + players[player_num])
         print()
-        print("1 Bit$ = ", round(bitsponsarr[-1], 2))
+        try:
+            percent_change = round(100 * (bitsponsarr[-1] - bitsponsarr[-2]) / bitsponsarr[-2], 1)
+        except ZeroDivisionError:
+            percent_change = "inf"
+        if percent_change < 0:
+            print("1 Bit$ = ", round(bitsponsarr[-1], 2), "(" + str(percent_change), "%)")
+        else:
+            print("1 Bit$ = ", round(bitsponsarr[-1], 2), " (+" + str(percent_change), "%)")
         print()
         print("5 Bit$ = ", int(round(5 * bitsponsarr[-1])))
         print("15 Bit$ = ", int(round(15 * bitsponsarr[-1])))
@@ -168,13 +175,6 @@ while (True):
         players.remove(players[player_num])
         print(players[player_num] + " is geëlimineerd")
         n -= 1
-    elif inp == 'newtest':
-        bitsponsarr = [10, 10, 10]
-        diff = [0, 0, 0]
-        for i in range(100):
-            update_bitspons3(diff, bitsponsarr)
-        plt.plot(bitsponsarr)
-        plt.show()
     else:
         try:
             print(inp + ' Bit$ = ' + str(int(round(float(inp) * bitsponsarr[-1]))) + ' $pons')
