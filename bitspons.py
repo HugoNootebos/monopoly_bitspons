@@ -84,8 +84,8 @@ while (True):
     if inp == "":
         turn_num += 1
         update_bitspons3(diff, bitsponsarr)
-        #plt.plot(bitsponsarr)
-        #plt.show()
+        plt.plot(bitsponsarr)
+        plt.show()
         if player_num >= int(n) - 1:
             player_num = 0
         else:
