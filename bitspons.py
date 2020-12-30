@@ -180,3 +180,4 @@ while (True):
             print(inp + ' Bit$ = ' + str(int(round(float(inp) * bitsponsarr[-1]))) + ' $pons')
         except:
             pass
+
